@@ -1,0 +1,11 @@
+{
+  "name": "aeg-logger",
+  "private": true,
+  "version": "0.0.1",
+  "main": "./lib/logger.js",
+  "dependencies": {
+    "config": "^1.12.0",
+    "should": "^5.2.0",
+    "winston": "^0.9.0"
+  }
+}

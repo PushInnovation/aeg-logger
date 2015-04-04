@@ -1,0 +1,8 @@
+{
+  "Logger": {
+    "consoleLevel": "debug",
+    "fileLevel": "debug",
+    "filename": "logs/out.log",
+    "logToFile": false
+  }
+}
