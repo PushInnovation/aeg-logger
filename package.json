@@ -1,7 +1,7 @@
 {
   "name": "aeg-logger",
   "private": true,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "./lib/logger.js",
   "devDependencies": {
     "should": "^5.2.0"
