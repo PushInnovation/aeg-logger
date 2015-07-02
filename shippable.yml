@@ -25,9 +25,9 @@ node_js:
 script:
     - npm -g install jshint
     - npm run jshint
-    - npm test
+    - npm test:coverage
 
 # Tell istanbul to generate a coverage report
 after_script:
-  - ./node_modules/.bin/istanbul cover `npm test` -- -u tdd
+  - ./node_modules/.bin/istanbul cover --dir  shippable/codecoverage/ _mocha -- --recursive test/
   - ./node_modules/.bin/istanbul report cobertura --dir  shippable/codecoverage/
