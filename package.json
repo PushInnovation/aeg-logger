@@ -4,7 +4,7 @@
   "version": "0.0.4",
   "main": "./lib/logger.js",
   "scripts": {
-    "test": "mocha --recursive test/",
+    "test": "mocha --recursive test/ -R xunit-file",
     "test:watch": "npm run test -- -w",
     "jshint": "jshint .",
     "jshint:watch": "npm run jshint && onchange \"**/*.js\" \".jshint*\" -- npm run jshint",
@@ -14,7 +14,8 @@
     "should": "^5.2.0",
     "mocha": "^2.2.5",
     "parallelshell": "^1.1.1",
-    "onchange": "^1.1.0"
+    "onchange": "^1.1.0",
+    "xunit-file": "0.0.6"
   },
   "dependencies": {
     "config": "^1.12.0",
