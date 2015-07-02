@@ -6,3 +6,12 @@ before_install:
   - 'echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
   - npm -g install jshint
   - npm run jshint
+# exclude
+branches:
+  except:
+    - dev
+
+# include
+branches:
+  only:
+    - master
