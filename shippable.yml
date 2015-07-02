@@ -1,7 +1,12 @@
+# language setting
 language: node_js
+
+# environment
 cache: true
-node_js:
-  - "0.10"
+
+env:
+  - XUNIT_FILE=shippable/testresults/result.xml
+
 # exclude
 branches:
   except:
@@ -11,6 +16,12 @@ branches:
 branches:
   only:
     - master
+
+# version number
+node_js:
+  - "0.10"
+
+# running the tests and jshint
 script:
     - npm -g install jshint
     - npm run jshint
