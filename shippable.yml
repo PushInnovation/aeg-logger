@@ -1,11 +1,7 @@
 language: node_js
 cache: true
 node_js:
-  - "0.12"
-before_install:
-  - 'echo -e "Host *\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config'
-  - npm -g install jshint
-  - npm run jshint
+  - "0.10"
 # exclude
 branches:
   except:
@@ -15,3 +11,7 @@ branches:
 branches:
   only:
     - master
+scripts:
+    - npm -g install jshint
+    - npm run jshint
+    - npm test
