@@ -21,6 +21,7 @@ branches:
 node_js:
   - "0.10"
 
+# install dependencies
 before_install:
   - npm -g install jshint
 
