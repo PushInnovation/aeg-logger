@@ -11,7 +11,7 @@ branches:
 branches:
   only:
     - master
-scripts:
+script:
     - npm -g install jshint
     - npm run jshint
     - npm test
