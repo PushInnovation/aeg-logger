@@ -2,7 +2,7 @@
 
 ### What is this repository for? ###
 
-This code is a configurable logger.
+This is a configurable logger.
 
 ### How do I get set up? ###
 1. Clone the repository
