@@ -21,11 +21,13 @@ branches:
 node_js:
   - "0.10"
 
+ before_install:
+  - npm -g install jshint
+
 # running the tests and jshint
 script:
-    - npm -g install jshint
-    - npm run jshint
-    - npm test:coverage
+  - npm run jshint
+  - npm run build
 
 # Tell istanbul to generate a coverage report
 after_script:
