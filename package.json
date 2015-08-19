@@ -1,8 +1,13 @@
 {
   "name": "@adexchangedevops/aeg-logger",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Configurable logger",
   "main": "./lib/logger.js",
+  "repository": {
+    "type": "git",
+    "url": "git://git@bitbucket.org:AdExchangeGrp/aeg-logger.git"
+  },
+  "license": "UNLICENSED",
   "scripts": {
     "test": "mocha --recursive test/",
     "test:watch": "npm run test -- -w",
