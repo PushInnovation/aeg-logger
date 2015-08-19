@@ -1,6 +1,7 @@
 {
   "name": "@adexchangedevops/aeg-logger",
-  "version": "0.0.5",
+  "version": "0.0.6",
+  "description": "Configurable logger",
   "main": "./lib/logger.js",
   "scripts": {
     "test": "mocha --recursive test/",
