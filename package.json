@@ -1,6 +1,6 @@
 {
   "name": "@adexchangedevops/aeg-logger",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Configurable logger",
   "main": "./lib/logger.js",
   "repository": {
@@ -16,7 +16,6 @@
     "jshint:watch": "npm run jshint && onchange \"**/*.js\" \".jshint*\" -- npm run jshint",
     "dev": "parallelshell \"npm run jshint:watch\" \"npm run test:watch\"",
     "build": "mocha --recursive test/ -R xunit-file",
-    "version": "git add -A dist",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
