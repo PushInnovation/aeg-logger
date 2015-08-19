@@ -15,7 +15,9 @@
     "jshint": "jshint .",
     "jshint:watch": "npm run jshint && onchange \"**/*.js\" \".jshint*\" -- npm run jshint",
     "dev": "parallelshell \"npm run jshint:watch\" \"npm run test:watch\"",
-    "build": "mocha --recursive test/ -R xunit-file"
+    "build": "mocha --recursive test/ -R xunit-file",
+    "version": "git add -A dist",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "should": "^5.2.0",
