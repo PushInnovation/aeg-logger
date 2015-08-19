@@ -1,7 +1,6 @@
 {
-  "name": "aeg-logger",
-  "private": true,
-  "version": "0.0.4",
+  "name": "@adexchangedevops/aeg-logger",
+  "version": "0.0.5",
   "main": "./lib/logger.js",
   "scripts": {
     "test": "mocha --recursive test/",
