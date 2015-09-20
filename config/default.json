@@ -1,8 +1,22 @@
 {
   "Logger": {
-    "consoleLevel": "debug",
-    "fileLevel": "debug",
-    "filename": "logs/out.log",
-    "logToFile": false
+    "transports": [
+      {
+        "type": "console",
+        "level": "debug"
+      },
+      {
+        "type": "file",
+        "level": "debug",
+        "filename": "logs/out.log"
+      },
+      {
+        "type": "paperTrail",
+        "level": "debug",
+        "host": "logs3.papertrailapp.com",
+        "port": 29137,
+        "program": "aeg-logger"
+      }
+    ]
   }
 }
