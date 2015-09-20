@@ -27,8 +27,8 @@ node_js:
 # install dependencies
 before_install:
   - npm install npm -g
-  - npm -g install jshint
   - echo $NPM_TOKEN >> ~/.npmrc
+  - npm -g install jshint
 
 # running the tests and jshint
 script:
