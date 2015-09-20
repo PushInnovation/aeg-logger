@@ -17,11 +17,10 @@ branches:
 
 # version number
 node_js:
-  - "0.10"
+  - "4.0"
 
 # install dependencies
 before_install:
-  - npm install npm -g
   - echo $NPM_TOKEN >> ~/.npmrc
   - npm -g install jshint
 
