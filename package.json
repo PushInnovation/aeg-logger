@@ -32,5 +32,6 @@
     "winston": "^1.0.1",
     "winston-error": "^0.1.0",
     "winston-papertrail": "^1.0.1"
-  }
+  },
+  "engine": "node >= 0.4.1"
 }
