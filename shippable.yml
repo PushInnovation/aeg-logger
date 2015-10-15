@@ -26,7 +26,6 @@ before_install:
 
 # running the tests and jshint
 script:
-  - npm run jshint
   - npm run build
 
 # Tell istanbul to generate a coverage report
