@@ -15,10 +15,6 @@ branches:
   only:
     - master
 
-# version number
-node_js:
-  - "4.1"
-
 # install dependencies
 before_install:
   - echo $NPM_TOKEN >> ~/.npmrc
