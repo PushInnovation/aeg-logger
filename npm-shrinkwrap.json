@@ -1,6 +1,6 @@
 {
   "name": "@adexchangedevops/aeg-logger",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "dependencies": {
     "config": {
       "version": "1.16.0",
