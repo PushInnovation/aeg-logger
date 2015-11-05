@@ -8,7 +8,7 @@
       {
         "type": "file",
         "level": "debug",
-        "filename": "logs/out.log"
+        "filename": "logs/aeg-logger.log"
       },
       {
         "type": "paperTrail",
