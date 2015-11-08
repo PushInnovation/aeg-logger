@@ -1,5 +1,5 @@
 FROM adexchangegrp/node:latest
 
-ENV NODE_ENV prod
+ENV NODE_ENV production
 
 COPY . /src
