@@ -66,4 +66,5 @@ describe('aeg-logger', () => {
 			done();
 		});
 	});
+
 });
