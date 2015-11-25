@@ -9,7 +9,7 @@ env:
     - NODE_ENV=development
     - XUNIT_FILE=shippable/testresults/result.xml
     - PROJECT=aeg-logger
-    - secure: MEepYd5zIPOm4IGuF6zbh3gn0AueLOHa4jcbMN6Wn7cbqVjJ9gVbPdvtCdRAh/GK2atPRzwR5VpQsHNCi5fBPMmJe0iCnFc3MOkjUyNkVNUMPckg0Gk4WGq1ib6kXdmBt5x9Jr5OqAr8QJPrdQKF6n5c5SZgKeG9IL61s3ApjeO8ep3hCVBcSHzektNecL9AhVvJd/hCcLMfL2Oe9VlpRgyRnygw5ZfTUes+4Hamc1CbymyC1hjaVmrR9g+d1XkP9lm+YA7wAtQ1pFFj0zfhieIwjANyTjCVPNM5+LQldQ4binSZHlbVo9QnHXqTvjqvheJ8jtnpyXc9UuVU0KhfAA==
+    - secure: Gj9L7CJbzIIuqU9kx9SGyzZzKocObl0MXOg/Vy5lFvK0vemHvg7WtQczWWtc/dQHnJyQJ/z41iX0xFkzyPFUpfwbhK+2VAiHobvFMeJlSjaYdpC0F9pAxAVW1opakN3c6U9LLrH5FzipLrhaBGS3zU9ZoIBl8AoWDBNifj/RizUbpz8H3yBuZWO6Od3iOBbBdRvNki2D7SxWXcOHwkNvJPbaz3t99PW4MA3Ku/ZWfj+oU50LMZ1NI3CK3SqzcomF+rsPQ9fHfccuTY6MnhXpINNc/PARsILdKAjoV/S4dZ8wJfH7YHYSmInBWRmbJqf0EXUWES2yq8fDD2dbjiENMA==
 
 # include
 branches:
@@ -19,6 +19,7 @@ branches:
 # install dependencies
 before_install:
   - echo $NPM_TOKEN >> ~/.npmrc
+  - cat ~/.npmrc
   - shippable_retry npm install
 
 # running the tests and jshint
