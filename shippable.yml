@@ -9,7 +9,6 @@ env:
     - NODE_ENV=development
     - XUNIT_FILE=shippable/testresults/result.xml
     - PROJECT=aeg-logger
-    - secure: Gj9L7CJbzIIuqU9kx9SGyzZzKocObl0MXOg/Vy5lFvK0vemHvg7WtQczWWtc/dQHnJyQJ/z41iX0xFkzyPFUpfwbhK+2VAiHobvFMeJlSjaYdpC0F9pAxAVW1opakN3c6U9LLrH5FzipLrhaBGS3zU9ZoIBl8AoWDBNifj/RizUbpz8H3yBuZWO6Od3iOBbBdRvNki2D7SxWXcOHwkNvJPbaz3t99PW4MA3Ku/ZWfj+oU50LMZ1NI3CK3SqzcomF+rsPQ9fHfccuTY6MnhXpINNc/PARsILdKAjoV/S4dZ8wJfH7YHYSmInBWRmbJqf0EXUWES2yq8fDD2dbjiENMA==
 
 # include
 branches:
@@ -18,7 +17,6 @@ branches:
 
 # install dependencies
 before_install:
-  - echo $NPM_TOKEN >> ~/.npmrc
   - shippable_retry npm install
 
 # running the tests and jshint
