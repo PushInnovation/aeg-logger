@@ -19,7 +19,6 @@ branches:
 # install dependencies
 before_install:
   - echo $NPM_TOKEN >> ~/.npmrc
-  - cat ~/.npmrc
   - shippable_retry npm install
 
 # running the tests and jshint
