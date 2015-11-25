@@ -6,7 +6,7 @@
   "author": "Justin Durham",
   "repository": {
     "type": "git",
-    "url": "git://git@bitbucket.org:AdExchangeGrp/aeg-logger.git"
+    "url": "https://github.com/AdExchangeGrp/aeg-logger.git"
   },
   "license": "UNLICENSED",
   "scripts": {
