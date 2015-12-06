@@ -1,3 +1,5 @@
+'use strict';
+
 var logger = require('./lib/logger');
 
 logger.debug('debug test');
