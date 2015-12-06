@@ -16,16 +16,16 @@
     "jshint": "jshint .",
     "jshint:watch": "npm run jshint && onchange \"**/*.js\" \".jshint*\" -- npm run jshint",
     "dev": "parallelshell \"npm run jshint:watch\"",
-    "build": "npm run jshint && mocha --recursive test/ -R xunit-file",
+    "build": "npm run jshint && mocha --recursive --recursive --reporter mocha-junit-reporter test/",
     "postversion": "git push && git push --tags && npm publish ."
   },
   "devDependencies": {
-    "should": "^7.1.0",
+    "istanbul": "^0.3.21",
     "mocha": "^2.3.3",
-    "parallelshell": "^2.0.0",
+    "mocha-junit-reporter": "^1.9.1",
     "onchange": "^2.0.0",
-    "xunit-file": "0.0.7",
-    "istanbul": "^0.3.21"
+    "parallelshell": "^2.0.0",
+    "should": "^7.1.0"
   },
   "dependencies": {
     "config": "^1.16.0",
