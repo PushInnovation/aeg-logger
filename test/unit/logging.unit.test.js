@@ -1,6 +1,6 @@
 'use strict';
 
-var logger = require('../../lib/logger');
+var logger = require('../../src/logger');
 
 describe('aeg-logger', () => {
 
