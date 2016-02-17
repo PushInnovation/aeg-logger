@@ -1,6 +1,6 @@
 'use strict';
 
-var logger = require('./lib/logger');
+var logger = require('./src/logger');
 
 logger.debug('debug test');
 logger.info('info test');

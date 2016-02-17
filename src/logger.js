@@ -1,12 +1,12 @@
 'use strict';
 
-var _ = require('lodash');
-var winston = require('winston');
-var Papertrail = require('winston-papertrail').Papertrail;
-var winstonError = require('winston-error');
-var config = require('config');
+let _ = require('lodash');
+let winston = require('winston');
+let Papertrail = require('winston-papertrail').Papertrail;
+let winstonError = require('winston-error');
+let config = require('config');
 
-var configLogger = config.get('logger');
+let configLogger = config.get('logger');
 
 winston.addColors({
 	debug: 'green',
@@ -15,19 +15,19 @@ winston.addColors({
 	error: 'red'
 });
 
-var transports = [];
+let transports = [];
 
-_.each(configLogger.transports, function (transport) {
+_.each(configLogger.transports, (transport) => {
 	switch (transport.type) {
 		case "console":
-			transports.push(new winston.transports.Console({
+			transports.push(new (winston.transports.Console)({
 				colorize: true,
 				level: transport.level,
 				handleExceptions: true
 			}));
 			break;
 		case "file":
-			transports.push(new winston.transports.File({
+			transports.push(new (winston.transports.File)({
 				colorize: true,
 				filename: transport.filename,
 				maxsize: 5242880,
@@ -51,7 +51,7 @@ _.each(configLogger.transports, function (transport) {
 	}
 });
 
-var logger = new winston.Logger({
+let logger = new winston.Logger({
 	transports: transports
 });
 
@@ -59,7 +59,7 @@ winstonError(logger);
 
 logger.errorWithMessage = function (message, options, err) {
 
-	var args = Array.prototype.slice.call(arguments);
+	let args = Array.prototype.slice.call(arguments);
 	message = args.shift();
 	err = args.pop();
 	options = args.length > 0 ? args.shift() : null;
