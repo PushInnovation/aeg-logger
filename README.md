@@ -10,7 +10,6 @@ This is a configurable logger.
 1. Create a config file in the config directory for yourself named #name#.config
 1. To set your config file, run ```export NODE_ENV=#name#.config```
 1. Run ```npm test``` to run unit tests
-1. Run ```npm run dev``` while doing development work to run jshint watch
 
 ### Who do I talk to? ###
 * Justin Durham
