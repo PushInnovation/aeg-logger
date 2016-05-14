@@ -1,4 +1,4 @@
-logger:
+aeg-logger:
   transports:
     - type: console
       level: debug
