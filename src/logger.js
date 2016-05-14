@@ -6,7 +6,7 @@ let Papertrail = require('winston-papertrail').Papertrail;
 let winstonError = require('winston-error');
 let config = require('config');
 
-let configLogger = config.get('logger');
+let configLogger = config.get('aeg-logger');
 
 winston.addColors({
 	debug: 'green',
