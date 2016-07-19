@@ -17,8 +17,8 @@ deployment:
   npm:
     branch: master
     commands:
-      - git config --global user.email "adexchangedevops@adexchangegrp.com"
-      - git config --global user.name "adexchangedevops"
+      - git config --global user.email $GIT_EMAIL
+      - git config --global user.name $GIT_USER
       - npm run patch
 
 general:

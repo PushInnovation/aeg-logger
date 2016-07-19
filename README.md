@@ -5,6 +5,7 @@
 This is a configurable logger.
 
 ### How do I get set up? ###
+
 1. Clone the repository
 1. Run ```npm install```
 1. Create a config file in the config directory for yourself named #name#.config
@@ -12,4 +13,5 @@ This is a configurable logger.
 1. Run ```npm test``` to run unit tests
 
 ### Who do I talk to? ###
+
 * Justin Durham
