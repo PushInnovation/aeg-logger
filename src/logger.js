@@ -52,7 +52,8 @@ _.each(configLogger.transports, (transport) => {
 });
 
 let logger = new winston.Logger({
-	transports: transports
+	transports: transports,
+	exitOnError: false
 });
 
 winstonError(logger);
