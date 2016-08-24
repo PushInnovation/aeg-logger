@@ -44,7 +44,7 @@ _.each(configLogger.transports, (transport) => {
 				port: transport.port,
 				level: transport.level,
 				program: transport.program,
-				colorize: true,
+				colorize: false,
 				inlineMeta: true
 			}));
 			break;
