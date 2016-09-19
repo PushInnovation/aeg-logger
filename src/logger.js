@@ -1,12 +1,10 @@
-'use strict';
+import _ from 'lodash';
+import winston from 'winston';
+import { Papertrail } from 'winston-papertrail';
+import winstonError from 'winston-error';
+import config from 'config';
 
-let _ = require('lodash');
-let winston = require('winston');
-let Papertrail = require('winston-papertrail').Papertrail;
-let winstonError = require('winston-error');
-let config = require('config');
-
-let configLogger = config.get('aeg-logger');
+const configLogger = config.get('aeg-logger');
 
 winston.addColors({
 	debug: 'green',
@@ -15,18 +13,19 @@ winston.addColors({
 	error: 'red'
 });
 
-let transports = [];
+const transports = [];
 
 _.each(configLogger.transports, (transport) => {
+
 	switch (transport.type) {
-		case "console":
+		case 'console':
 			transports.push(new (winston.transports.Console)({
 				colorize: true,
 				level: transport.level,
 				handleExceptions: true
 			}));
 			break;
-		case "file":
+		case 'file':
 			transports.push(new (winston.transports.File)({
 				colorize: true,
 				filename: transport.filename,
@@ -38,7 +37,7 @@ _.each(configLogger.transports, (transport) => {
 				json: true
 			}));
 			break;
-		case "paperTrail":
+		case 'paperTrail':
 			transports.push(new Papertrail({
 				host: transport.host,
 				port: transport.port,
@@ -49,9 +48,10 @@ _.each(configLogger.transports, (transport) => {
 			}));
 			break;
 	}
+
 });
 
-let logger = new winston.Logger({
+const logger = new winston.Logger({
 	transports: transports,
 	exitOnError: false
 });
@@ -60,7 +60,7 @@ winstonError(logger);
 
 logger.errorWithMessage = function (message, options, err) {
 
-	let args = Array.prototype.slice.call(arguments);
+	const args = Array.prototype.slice.call(arguments);
 	message = args.shift();
 	err = args.pop();
 	options = args.length > 0 ? args.shift() : null;
@@ -68,8 +68,11 @@ logger.errorWithMessage = function (message, options, err) {
 	this.error(message, options);
 
 	if (err) {
+
 		this.error(err);
+
 	}
+
 };
 
 module.exports = logger;

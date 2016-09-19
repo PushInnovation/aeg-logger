@@ -1,6 +1,4 @@
-'use strict';
-
-var logger = require('./src/logger');
+import logger from './src/logger';
 
 logger.debug('debug test');
 logger.info('info test');

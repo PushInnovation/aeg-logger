@@ -5,8 +5,8 @@ aeg-logger:
     - type: file
       level: debug
       filename: logs/aeg-logger.log
-#    - type: paperTrail
-#      level: debug
-#      host: x
-#      port: x
-#      program: aeg-logger
+    - type: paperTrail
+      level: debug
+      host: logs3.papertrailapp.com
+      port: 39168
+      program: test
