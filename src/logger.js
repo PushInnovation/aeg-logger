@@ -1,10 +1,12 @@
+// @flow
+
 import _ from 'lodash';
 import winston from 'winston';
 import { Papertrail } from 'winston-papertrail';
 import winstonError from 'winston-error';
 import config from 'config';
 
-const configLogger = config.get('aeg-logger');
+const configLogger: Object = config.get('aeg-logger');
 
 winston.addColors({
 	debug: 'green',
@@ -51,16 +53,17 @@ _.each(configLogger.transports, (transport) => {
 
 });
 
-const logger = new winston.Logger({
+const logger: winston.Logger = new winston.Logger({
 	transports: transports,
 	exitOnError: false
 });
 
 winstonError(logger);
 
+// noinspection JSUndefinedPropertyAssignment
 logger.errorWithMessage = function (message, options, err) {
 
-	const args = Array.prototype.slice.call(arguments);
+	const args: Object[] = Array.prototype.slice.call(arguments);
 	message = args.shift();
 	err = args.pop();
 	options = args.length > 0 ? args.shift() : null;
