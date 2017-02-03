@@ -1,5 +1,3 @@
-// @flow
-
 import logger from './src/logger';
 
 logger.debug('debug test');
