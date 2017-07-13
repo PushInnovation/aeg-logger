@@ -11,9 +11,9 @@
   "license": "UNLICENSED",
   "scripts": {
     "start": "node index.js",
-    "test": "mocha --recursive --compilers js:ts-node/register test/",
-    "test:coverage": "istanbul cover _mocha -- --recursive --compilers js:ts-node/register test/",
-    "test:build": "istanbul cover _mocha -- --recursive --compilers js:babel-core/register --reporter mocha-junit-reporter test/unit",
+    "test": "mocha --recursive --compilers ts:ts-node/register test/**/*.ts",
+    "test:coverage": "istanbul cover _mocha -- --recursive --compilers ts:ts-node/register test/**/*.ts",
+    "test:build": "istanbul cover _mocha -- --recursive --compilers ts:ts-node/register --reporter mocha-junit-reporter test/unit/**/*.ts",
     "lint": "tslint src/**/*.ts",
     "lint:watch": "npm run tslint && onchange \"**/*.ts\" \"tslint.json\" -- npm run lint",
     "compile": "tsc",

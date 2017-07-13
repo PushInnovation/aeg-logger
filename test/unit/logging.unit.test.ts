@@ -76,25 +76,15 @@ describe('aeg-logger', async () => {
 
 		});
 
-		it('should print error with stack trace', async () => {
-
-			logger.error(new Error('This is a test with a real error'), {first: 1, second: 2});
-
-		});
-
-	});
-
-	describe('#errorWithMessage()', async () => {
-
 		it('should print an error message with an error and stack', async () => {
 
-			logger.errorWithMessage('This is a test with args', new Error('this is a test'));
+			logger.error('This is a test with args', new Error('this is a test'));
 
 		});
 
 		it('should print an error message with an error, an object, and a stack', async () => {
 
-			logger.errorWithMessage('This is a test with args', {first: 1, second: 2}, new Error('this is a test'));
+			logger.error('This is a test with args', {first: 1, second: 2}, new Error('this is a test'));
 
 		});
 

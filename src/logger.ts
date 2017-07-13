@@ -6,17 +6,17 @@ import * as config from 'config';
 
 export namespace aeg {
 
-	export interface LoggerConfig {
+	export interface ILoggerConfig {
 		transports: any[];
 	}
 
 	export class Logger extends winston.Logger {
 
-		constructor (config: LoggerConfig) {
+		constructor (loggerConfig: ILoggerConfig) {
 
 			const transports: winston.TransportInstance[] = [];
 
-			_.each(config.transports, (transport) => {
+			_.each(loggerConfig.transports, (transport) => {
 
 				switch (transport.type) {
 					case 'console':
@@ -53,10 +53,10 @@ export namespace aeg {
 			});
 
 			super({
-				transports: transports,
+				transports,
 				exitOnError: false
 			});
-			
+
 		}
 
 	}
