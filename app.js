@@ -1,4 +1,4 @@
-import logger from './src/logger';
+const logger = require('./lib/logger').default;
 
 logger.debug('debug test');
 logger.info('info test');
