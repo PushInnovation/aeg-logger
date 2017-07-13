@@ -17,4 +17,5 @@ const logger = new Logger(loggerConfig);
 
 winstonError(logger);
 
+export { Logger, ILoggerConfig };
 export default logger;
