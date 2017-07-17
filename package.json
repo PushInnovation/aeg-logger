@@ -11,7 +11,6 @@
   },
   "license": "UNLICENSED",
   "scripts": {
-    "start": "node index.js",
     "test": "mocha --recursive --compilers ts:ts-node/register test/**/*.ts",
     "test:coverage": "istanbul cover _mocha -- --recursive --compilers ts:ts-node/register test/**/*.ts",
     "test:build": "istanbul cover _mocha -- --recursive --compilers ts:ts-node/register --reporter mocha-junit-reporter test/unit/**/*.ts",
