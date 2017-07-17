@@ -1,6 +1,6 @@
 {
   "name": "@adexchange/aeg-logger",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Configurable logger",
   "main": "./lib/logger.js",
   "author": "Justin Durham",
