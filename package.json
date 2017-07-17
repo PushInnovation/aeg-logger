@@ -2,7 +2,8 @@
   "name": "@adexchange/aeg-logger",
   "version": "0.0.38",
   "description": "Configurable logger",
-  "main": "./lib/logger.js",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "author": "Justin Durham",
   "repository": {
     "type": "git",

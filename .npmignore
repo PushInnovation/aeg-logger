@@ -13,3 +13,7 @@ circle.yml
 .eslint*
 .babelrc
 /config
+test-results.xml
+.editorconfig
+tsconfig.json
+tslint.json
