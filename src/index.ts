@@ -3,7 +3,7 @@ import { ILogger, ILoggerConfig } from './logger';
 import * as winston from 'winston';
 import * as config from 'config';
 
-const loggerConfig: ILoggerConfig = config.get('aeg-logger');
+const loggerConfig = config.get<ILoggerConfig>('aeg-logger');
 
 winston.addColors({
 	debug: 'green',
