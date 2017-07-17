@@ -1,12 +1,22 @@
 import * as _ from 'lodash';
 import * as winston from 'winston';
+import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
 
 export interface ILoggerConfig {
 	transports: any[];
 }
 
-export default class Logger extends winston.Logger {
+export interface ILogger {
+	debug (message: string, data?: any, error?: Error);
+	info (message: string, data?: any, error?: Error);
+	warn (message: string, data?: any, error?: Error);
+	error (message: string, data?: any, error?: Error);
+}
+
+export default class Logger implements ILogger {
+
+	private _logger: winston.LoggerInstance;
 
 	constructor (loggerConfig: ILoggerConfig) {
 
@@ -48,10 +58,36 @@ export default class Logger extends winston.Logger {
 
 		});
 
-		super({
+		this._logger = new winston.Logger({
 			transports,
 			exitOnError: false
 		});
+
+		winstonError(this._logger);
+
+	}
+
+	public debug (message: string, data?: any, error?: Error) {
+
+		this._logger.debug(message, data, error);
+
+	}
+
+	public info (message: string, data?: any, error?: Error) {
+
+		this._logger.info(message, data, error);
+
+	}
+
+	public warn (message: string, data?: any, error?: Error) {
+
+		this._logger.warn(message, data, error);
+
+	}
+
+	public error (message: string, data?: any, error?: Error) {
+
+		this._logger.error(message, data, error);
 
 	}
 
