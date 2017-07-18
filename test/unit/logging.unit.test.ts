@@ -1,20 +1,16 @@
 import logger from '../../src/index';
 
-describe('aeg-logger', async () => {
+describe('aeg-logger', () => {
 
-	describe('#debug()', async () => {
+	describe('#debug()', () => {
 
-		it('should print an debug with args', async () => {
+		it('should print a debug with args', () => {
 
 			logger.debug('This is a test with args', {first: 1, second: 2});
 
 		});
 
-	});
-
-	describe('#debug()', async () => {
-
-		it('should print an debug without args', async () => {
+		it('should print a debug without args', () => {
 
 			logger.debug('This is a test without args');
 
@@ -22,19 +18,15 @@ describe('aeg-logger', async () => {
 
 	});
 
-	describe('#info()', async () => {
+	describe('#info()', () => {
 
-		it('should print an info with args', async () => {
+		it('should print an info with args', () => {
 
 			logger.info('This is a test with args', {first: 1, second: 2});
 
 		});
 
-	});
-
-	describe('#info2()', async () => {
-
-		it('should print an info without args', async () => {
+		it('should print an info without args', () => {
 
 			logger.info('This is a test without args');
 
@@ -42,47 +34,55 @@ describe('aeg-logger', async () => {
 
 	});
 
-	describe('#warn()', async () => {
+	describe('#warn()', () => {
 
-		it('should print an warning with args', async () => {
+		it('should print a warning with args', () => {
 
 			logger.warn('This is a test with args', {first: 1, second: 2});
 
 		});
 
-	});
-
-	describe('#warn2()', async () => {
-
-		it('should print an warning without args', async () => {
+		it('should print a warning without args', () => {
 
 			logger.warn('This is a test without args');
 
 		});
 
+		it('should print a warning with an error', () => {
+
+			logger.warn('This is a test with args', new Error('this is a test'));
+
+		});
+
+		it('should print a warning with args and an error', () => {
+
+			logger.warn('This is a test with args', {first: 1, second: 2}, new Error('this is a test'));
+
+		});
+
 	});
 
-	describe('#error()', async () => {
+	describe('#error()', () => {
 
-		it('should print an error with args', async () => {
+		it('should print an error with args', () => {
 
 			logger.error('This is a test with args', {first: 1, second: 2});
 
 		});
 
-		it('should print an error without args', async () => {
+		it('should print an error without args', () => {
 
 			logger.error('This is a test without args');
 
 		});
 
-		it('should print an error message with an error and stack', async () => {
+		it('should print an error message with an error and stack', () => {
 
 			logger.error('This is a test with args', new Error('this is a test'));
 
 		});
 
-		it('should print an error message with an error, an object, and a stack', async () => {
+		it('should print an error message with an error, an object, and a stack', () => {
 
 			logger.error('This is a test with args', {first: 1, second: 2}, new Error('this is a test'));
 
