@@ -1,65 +1,66 @@
 {
-  "name": "@adexchange/aeg-logger",
-  "version": "0.0.28",
-  "description": "Configurable logger",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "author": "Justin Durham",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/AdExchangeGrp/aeg-logger.git"
-  },
-  "license": "UNLICENSED",
-  "scripts": {
-    "test": "mocha --recursive --compilers ts:ts-node/register --reporter mocha-junit-reporter test/**/*.ts",
-    "test:coverage": "nyc npm test",
-    "lint": "tslint src/**/*.ts",
-    "lint:watch": "npm run tslint && onchange \"**/*.ts\" \"tslint.json\" -- npm run lint",
-    "compile": "tsc",
-    "compile:watch": "npm run compile -- --watch",
-    "dev": "npm run compile:watch",
-    "build": "npm run lint && npm run compile && npm run test:coverage",
-    "patch": "git reset --hard HEAD && git clean -fd && npm run compile && npm version patch -m \"[ci skip] %s\" && git push origin master && git push origin master --tags && npm publish"
-  },
-  "nyc": {
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "**/*.d.ts"
-    ],
-    "extension": [
-      ".ts"
-    ],
-    "require": [
-      "ts-node/register"
-    ],
-    "reporter": [
-      "json",
-      "html"
-    ],
-    "all": true
-  },
-  "devDependencies": {
-    "@types/config": "0.0.32",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^6.0.0",
-    "@types/winston": "^2.3.3",
-    "mocha": "^3.2.0",
-    "mocha-junit-reporter": "^1.13.0",
-    "nyc": "^11.0.3",
-    "onchange": "^3.2.1",
-    "should": "^11.2.0",
-    "ts-node": "^3.2.0",
-    "tslint": "^5.5.0",
-    "typescript": "^2.4.1"
-  },
-  "dependencies": {
-    "config": "^1.25.1",
-    "js-yaml": "^3.8.1",
-    "winston": "^2.3.1",
-    "winston-error": "^1.0.1",
-    "winston-papertrail": "^1.0.4"
-  },
-  "engine": "node >= 6.10.0"
+	"name": "@adexchange/aeg-logger",
+	"version": "0.0.28",
+	"description": "Configurable logger",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"author": "Justin Durham",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/AdExchangeGrp/aeg-logger.git"
+	},
+	"license": "UNLICENSED",
+	"scripts": {
+		"test": "mocha --recursive --compilers ts:ts-node/register test/**/*.ts",
+		"test:coverage": "nyc npm run test",
+		"lint": "tslint src/**/*.ts",
+		"lint:watch": "npm run lint && onchange \"**/*.ts\" \"tslint.json\" -- npm run lint",
+		"compile": "tsc",
+		"compile:watch": "npm run compile -- --watch",
+		"dev": "npm run compile:watch",
+		"build:test": "mocha --recursive --compilers ts:ts-node/register --reporter mocha-junit-reporter test/**/*.ts",
+		"build:coverage": "nyc npm run build:test",
+		"patch": "git reset --hard HEAD && git clean -fd && npm run compile && npm version patch -m \"[ci skip] %s\" && git push origin master && git push origin master --tags && npm publish"
+	},
+	"nyc": {
+		"include": [
+			"src/**/*.ts"
+		],
+		"exclude": [
+			"**/*.d.ts"
+		],
+		"extension": [
+			".ts"
+		],
+		"require": [
+			"ts-node/register"
+		],
+		"reporter": [
+			"json",
+			"html"
+		],
+		"all": true
+	},
+	"devDependencies": {
+		"@types/config": "0.0.32",
+		"@types/mocha": "^2.2.41",
+		"@types/node": "^6.0.0",
+		"@types/winston": "^2.3.3",
+		"mocha": "^3.2.0",
+		"mocha-junit-reporter": "^1.13.0",
+		"nyc": "^11.0.3",
+		"onchange": "^3.2.1",
+		"should": "^11.2.0",
+		"ts-node": "^3.2.0",
+		"tslint": "^5.5.0",
+		"typescript": "^2.4.1"
+	},
+	"dependencies": {
+		"config": "^1.25.1",
+		"js-yaml": "^3.8.1",
+		"winston": "^2.3.1",
+		"winston-error": "^1.0.1",
+		"winston-papertrail": "^1.0.4"
+	},
+	"engine": "node >= 6.10.0"
 }
