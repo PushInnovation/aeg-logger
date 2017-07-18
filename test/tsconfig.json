@@ -4,7 +4,6 @@
 		"lib": [
 			"es2015"
 		],
-		"outDir": "lib",
 		"sourceMap": true,
 		"declaration": true,
 		"moduleResolution": "node",
@@ -13,6 +12,6 @@
 		"alwaysStrict": true
 	},
 	"include": [
-		"src/**/*.ts"
+		"**/*.ts"
 	]
 }
