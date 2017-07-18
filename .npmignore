@@ -10,8 +10,6 @@ xunit.xml
 .idea
 .circleci
 .gitignore
-.eslint*
-.babelrc
 /config
 test-results.xml
 .editorconfig
