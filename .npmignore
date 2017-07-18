@@ -17,3 +17,4 @@ test-results.xml
 .editorconfig
 tsconfig.json
 tslint.json
+.nyc_output
