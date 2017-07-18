@@ -8,7 +8,7 @@
 ~$*
 xunit.xml
 .idea
-circle.yml
+.circleci
 .gitignore
 .eslint*
 .babelrc
