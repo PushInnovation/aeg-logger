@@ -12,7 +12,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "test": "mocha --recursive --compilers ts:ts-node/register --reporter mocha-junit-reporter test/**/*.ts",
-	"test:coverage": "nyc npm test",
+    "test:coverage": "nyc npm test",
     "lint": "tslint src/**/*.ts",
     "lint:watch": "npm run tslint && onchange \"**/*.ts\" \"tslint.json\" -- npm run lint",
     "compile": "tsc",
@@ -22,20 +22,29 @@
     "patch": "git reset --hard HEAD && git clean -fd && npm run compile && npm version patch -m \"[ci skip] %s\" && git push origin master && git push origin master --tags && npm publish"
   },
   "nyc": {
-	"include": [ "src/**/*.ts" ],
-	"exclude": [ "**/*.d.ts" ],
-	"extension": [ ".ts" ],
-	"require": [ "ts-node/register" ],
-	"reporter": [ "json", "html" ],
-	"all": true
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "reporter": [
+      "json",
+      "html"
+    ],
+    "all": true
   },
   "devDependencies": {
     "@types/config": "0.0.32",
-    "@types/lodash": "^4.14.68",
     "@types/mocha": "^2.2.41",
     "@types/node": "^6.0.0",
     "@types/winston": "^2.3.3",
-    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.2.0",
     "mocha-junit-reporter": "^1.13.0",
     "nyc": "^11.0.3",
@@ -48,7 +57,6 @@
   "dependencies": {
     "config": "^1.25.1",
     "js-yaml": "^3.8.1",
-    "lodash": "^4.17.4",
     "winston": "^2.3.1",
     "winston-error": "^1.0.1",
     "winston-papertrail": "^1.0.4"

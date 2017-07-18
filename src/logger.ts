@@ -1,4 +1,3 @@
-import * as _ from 'lodash';
 import * as winston from 'winston';
 import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
@@ -22,7 +21,7 @@ export default class Logger implements ILogger {
 
 		const transports: winston.TransportInstance[] = [];
 
-		_.each(loggerConfig.transports, (transport) => {
+		loggerConfig.transports.forEach((transport) => {
 
 			switch (transport.type) {
 				case 'console':
