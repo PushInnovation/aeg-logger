@@ -1,5 +1,4 @@
-import Logger from './logger';
-import { ILogger, ILoggerConfig } from './logger';
+import Logger, { ILogger, ILoggerConfig } from './logger';
 import * as winston from 'winston';
 import * as config from 'config';
 
@@ -12,7 +11,5 @@ winston.addColors({
 	error: 'red'
 });
 
-const logger = new Logger(loggerConfig);
-
-export default logger;
+export default new Logger(loggerConfig);
 export { Logger, ILogger, ILoggerConfig };
