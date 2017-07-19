@@ -1,6 +1,6 @@
 {
   "name": "@adexchange/aeg-logger",
-  "version": "0.0.1",
+  "version": "0.0.40",
   "description": "Configurable logger",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
