@@ -70,25 +70,25 @@ export default class Logger implements ILogger {
 
 	public debug (message: string, data?: any) {
 
-		this._logger.debug.apply(this, Array.prototype.slice.call(arguments));
+		this._logger.debug.apply(this._logger, Array.prototype.slice.call(arguments));
 
 	}
 
 	public info (message: string, data?: any) {
 
-		this._logger.info.apply(this, Array.prototype.slice.call(arguments));
+		this._logger.info.apply(this._logger, Array.prototype.slice.call(arguments));
 
 	}
 
 	public warn (message: string, data?: any, error?: Error) {
 
-		this._logger.warn.apply(this, Array.prototype.slice.call(arguments));
+		this._logger.warn.apply(this._logger, Array.prototype.slice.call(arguments));
 
 	}
 
 	public error (message: string, data?: any, error?: Error) {
 
-		this._logger.error.apply(this, Array.prototype.slice.call(arguments));
+		this._logger.error.apply(this._logger, Array.prototype.slice.call(arguments));
 
 	}
 
