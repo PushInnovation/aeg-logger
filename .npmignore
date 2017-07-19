@@ -8,10 +8,8 @@
 ~$*
 xunit.xml
 .idea
-circle.yml
+.circleci
 .gitignore
-.eslint*
-.babelrc
 /config
 test-results.xml
 .editorconfig
