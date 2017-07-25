@@ -1,6 +1,7 @@
 import * as winston from 'winston';
 import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
+import { TransportInstance } from 'winston';
 
 export interface ILoggerConfig {
 	transports: any[];
@@ -65,6 +66,12 @@ export default class Logger implements ILogger {
 		});
 
 		winstonError(this._logger);
+
+	}
+
+	get transports (): { [key: string]: TransportInstance } {
+
+		return this._logger.transports;
 
 	}
 
