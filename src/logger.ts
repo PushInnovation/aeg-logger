@@ -8,7 +8,6 @@ export interface ILoggerConfig {
 }
 
 export interface ILogger {
-	readonly transports: { [key: string]: TransportInstance };
 	debug (message: string, data?: any);
 	info (message: string, data?: any);
 	warn (message: string, error?: Error);
