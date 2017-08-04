@@ -2,6 +2,7 @@ aeg-logger:
   transports:
     - type: console
       level: debug
+      colorize: false
     - type: file
       level: debug
       filename: logs/aeg-logger.log
