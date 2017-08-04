@@ -29,14 +29,14 @@ export default class Logger implements ILogger {
 			switch (transport.type) {
 				case 'console':
 					transports.push(new (winston.transports.Console)({
-						colorize: true,
+						colorize: transport.colorize !== undefined ? transport.colorize : true,
 						level: transport.level,
 						handleExceptions: true
 					}));
 					break;
 				case 'file':
 					transports.push(new (winston.transports.File)({
-						colorize: true,
+						colorize: transport.colorize !== undefined ? transport.colorize : true,
 						filename: transport.filename,
 						maxsize: 5242880,
 						maxFiles: 5,
