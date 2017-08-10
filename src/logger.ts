@@ -31,7 +31,8 @@ export default class Logger implements ILogger {
 					transports.push(new (winston.transports.Console)({
 						colorize: transport.colorize !== undefined ? transport.colorize : true,
 						level: transport.level,
-						handleExceptions: true
+						handleExceptions: true,
+						timestamp: transport.timestamp
 					}));
 					break;
 				case 'file':
