@@ -2,7 +2,6 @@ import * as winston from 'winston';
 import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
 import { TransportInstance } from 'winston';
-import * as moment from 'moment';
 
 export interface ILoggerConfig {
 	transports: any[];
@@ -29,17 +28,12 @@ export default class Logger implements ILogger {
 
 			switch (transport.type) {
 				case 'console':
-					const opts: any = {
+					transports.push(new (winston.transports.Console)({
 						colorize: transport.colorize !== undefined ? transport.colorize : true,
 						level: transport.level,
-						handleExceptions: true
-					};
-					if (transport.timestamp) {
-						opts.timestamp = () => {
-							return moment().toISOString();
-						};
-					}
-					transports.push(new (winston.transports.Console)(opts));
+						handleExceptions: true,
+						timestamp: transport.timestamp
+					}));
 					break;
 				case 'file':
 					transports.push(new (winston.transports.File)({
