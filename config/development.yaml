@@ -3,6 +3,7 @@ aeg-logger:
     - type: console
       level: debug
       colorize: false
+      timestamp: true
     - type: file
       level: debug
       filename: logs/aeg-logger.log
