@@ -1,5 +1,6 @@
 import * as winston from 'winston';
 import * as winstonError from 'winston-error';
+import * as winstonLogAndExit from 'winston-log-and-exit';
 import { Papertrail } from 'winston-papertrail';
 
 export interface ILoggerConfig {
@@ -13,11 +14,12 @@ export interface ILogger {
 	warn (message: string, data: any, error?: Error);
 	error (message: string, error?: Error);
 	error (message: string, data: any, error?: Error);
+	crash (message: string);
 }
 
 export default class Logger implements ILogger {
 
-	private _logger: winston.LoggerInstance;
+	private _logger: winstonLogAndExit.LoggerInstance;
 
 	constructor (loggerConfig: ILoggerConfig) {
 
@@ -89,6 +91,12 @@ export default class Logger implements ILogger {
 	public error (message: string, data?: any, error?: Error) {
 
 		this._logger.error.apply(this._logger, Array.prototype.slice.call(arguments));
+
+	}
+
+	public crash (message: string) {
+
+		this._logger.logAndExit('error', message, 1);
 
 	}
 
