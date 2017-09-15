@@ -1,6 +1,5 @@
 import * as winston from 'winston';
 import * as winstonError from 'winston-error';
-import * as winstonLogAndExit from 'winston-log-and-exit';
 import { Papertrail } from 'winston-papertrail';
 
 export interface ILoggerConfig {
@@ -14,12 +13,12 @@ export interface ILogger {
 	warn (message: string, data: any, error?: Error);
 	error (message: string, error?: Error);
 	error (message: string, data: any, error?: Error);
-	crash (message: string);
+	crashProcessWithError (message: string, error?: Error);
 }
 
 export default class Logger implements ILogger {
 
-	private _logger: winstonLogAndExit.LoggerInstance;
+	private _logger: winston.LoggerInstance;
 
 	constructor (loggerConfig: ILoggerConfig) {
 
@@ -94,9 +93,47 @@ export default class Logger implements ILogger {
 
 	}
 
-	public crash (message: string) {
+/********************************************************************************************
+	The following code has been adapted from https://github.com/jdthorpe/winston-log-and-exit
+	Retrieved 2017-09-15.  Its use is permitted by the MIT license.
+********************************************************************************************/
+	public crashProcessWithError (message: string, error?: Error) {
 
-		this._logger.logAndExit('error', message, 1);
+		const self = this._logger;
+		self.log('error', message, error, (err) => {
+
+			let numFlushes = 0;
+			let numFlushed = 0;
+			Object.keys(self.transports).forEach((k) => {
+
+				const transport = self.transports[k] as any;
+				if (transport._stream) {
+
+					numFlushes += 1;
+					transport._stream.once('finish', () => {
+
+						numFlushed += 1;
+						if (numFlushes === numFlushed) {
+
+							process.exit(1);
+
+						}
+
+					});
+
+					transport._stream.end();
+
+				}
+
+			});
+
+			if (numFlushes === 0) {
+
+				process.exit(1);
+
+			}
+
+		});
 
 	}
 
