@@ -3,11 +3,12 @@ aeg-logger:
     - type: console
       level: debug
       colorize: false
+      timestamp: true
     - type: file
       level: debug
       filename: logs/aeg-logger.log
     - type: paperTrail
       level: debug
-      host: logs3.papertrailapp.com
-      port: 39168
+      host: x
+      port: x
       program: test
