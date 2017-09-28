@@ -1,5 +1,5 @@
 {
-  "name": "@adexchange/aeg-logger",
+  "name": "@push_innovation/aeg-logger",
   "version": "0.0.1",
   "description": "Configurable logger",
   "main": "./lib/index.js",
@@ -7,7 +7,7 @@
   "author": "Justin Durham",
   "repository": {
     "type": "git",
-    "url": "https://github.com/AdExchangeGrp/aeg-logger.git"
+    "url": "https://github.com/pushinnovation/aeg-logger.git"
   },
   "license": "UNLICENSED",
   "scripts": {
