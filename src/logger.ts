@@ -1,7 +1,7 @@
 import * as winston from 'winston';
 import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
-import { TransportInstance } from 'winston';
+import { TransportInstance, TransportOptions } from 'winston';
 
 export interface ILoggerConfig {
 	transports: any[];
@@ -77,6 +77,12 @@ export default class Logger implements ILogger {
 
 	}
 
+	public addTransport (transport: winston.TransportInstance, options: TransportOptions) {
+
+		this._logger.add(transport, options);
+
+	}
+
 	public debug (message: string, data?: any) {
 
 		this._logger.debug.apply(this._logger, Array.prototype.slice.call(arguments));
@@ -101,10 +107,10 @@ export default class Logger implements ILogger {
 
 	}
 
-/********************************************************************************************
-	The following code has been adapted from https://github.com/jdthorpe/winston-log-and-exit
-	Retrieved 2017-09-15.  Its use is permitted by the MIT license.
-********************************************************************************************/
+	/********************************************************************************************
+	 The following code has been adapted from https://github.com/jdthorpe/winston-log-and-exit
+	 Retrieved 2017-09-15.  Its use is permitted by the MIT license.
+	 ********************************************************************************************/
 	public crashProcessWithError (message: string, error?: Error) {
 
 		const self = this._logger;
