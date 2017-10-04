@@ -1,6 +1,17 @@
 import logger from '../../src/index';
+import * as winston from 'winston';
 
 describe('aeg-logger', () => {
+
+	describe('#addTransport()', () => {
+
+		it('should print a debug with args', () => {
+
+			logger.addTransport(winston.transports.Console, {level: 'debug', colorize: 'false', timestamp: true});
+
+		});
+
+	});
 
 	describe('#debug()', () => {
 

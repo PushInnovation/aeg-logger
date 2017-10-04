@@ -1,14 +1,16 @@
 aeg-logger:
   transports:
-    - type: console
-      level: debug
-      colorize: false
-      timestamp: true
+# adding this via API
+#    - type: console
+#      level: debug
+#      colorize: false
+#      timestamp: true
     - type: file
       level: debug
       filename: logs/aeg-logger.log
-    - type: paperTrail
-      level: debug
-      host: x
-      port: x
-      program: test
+# example
+#    - type: paperTrail
+#      level: debug
+#      host: x
+#      port: x
+#      program: test
