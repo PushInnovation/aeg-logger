@@ -1,6 +1,12 @@
 import logger from '../../src/index';
 import * as winston from 'winston';
 
+after(async () => {
+
+	await logger.flush();
+
+});
+
 describe('aeg-logger', () => {
 
 	describe('#addTransport()', () => {
