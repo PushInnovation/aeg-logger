@@ -142,6 +142,9 @@ export default class Logger implements ILogger {
 
 	}
 
+	/**
+	 * Callable once as it will close the transport streams, cleanup and end your process
+	 */
 	public async flush () {
 
 		await Promise.all([this._flushCloudWatch(), this._flushStreams()]);
