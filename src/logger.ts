@@ -1,7 +1,8 @@
 import * as winston from 'winston';
-import * as winstonError from 'winston-error';
 import { Papertrail } from 'winston-papertrail';
+import * as WinstonCloudWatch from 'winston-cloudwatch';
 import { TransportInstance, TransportOptions } from 'winston';
+import * as _ from 'lodash';
 
 export interface ILoggerConfig {
 	transports: any[];
@@ -58,6 +59,18 @@ export default class Logger implements ILogger {
 						inlineMeta: true
 					}));
 					break;
+				case 'cloudWatch':
+					transports.push(new (WinstonCloudWatch as any)({
+						level: transport.level,
+						logGroupName: transport.logGroupName,
+						logStreamName: transport.logStreamName,
+						awsAccessKeyId: transport.awsAccessKeyId,
+						awsSecretKey: transport.awsSecretKey,
+						awsRegion: transport.awsRegion,
+						retentionInDays: transport.retentionInDays,
+						jsonMessage: true
+					}));
+					break;
 			}
 
 		});
@@ -66,8 +79,6 @@ export default class Logger implements ILogger {
 			transports,
 			exitOnError: false
 		});
-
-		winstonError(this._logger);
 
 	}
 
@@ -80,6 +91,30 @@ export default class Logger implements ILogger {
 	public addTransport (transport: winston.TransportInstance, options: TransportOptions) {
 
 		this._logger.add(transport, options);
+
+	}
+
+	public updateTransport (name: string, property: string, value: any) {
+
+		const transport = _.find(this._logger.transports, (t) => t.name === name);
+
+		if (transport) {
+
+			if (transport[property]) {
+
+				transport[property] = value;
+
+			} else {
+
+				throw new Error('Transport property not found');
+
+			}
+
+		} else {
+
+			throw new Error('Transport not found');
+
+		}
 
 	}
 
@@ -107,20 +142,81 @@ export default class Logger implements ILogger {
 
 	}
 
-	/********************************************************************************************
-	 The following code has been adapted from https://github.com/jdthorpe/winston-log-and-exit
-	 Retrieved 2017-09-15.  Its use is permitted by the MIT license.
-	 ********************************************************************************************/
+	/**
+	 * Callable once as it will close the transport streams, cleanup and end your process
+	 */
+	public async flush () {
+
+		await Promise.all([this._flushCloudWatch(), this._flushStreams()]);
+
+	}
+
 	public crashProcessWithError (message: string, error?: Error) {
 
-		const self = this._logger;
-		self.log('error', message, error, (err) => {
+		this._logger.log('error', message, error, (err) => {
+
+			this.flush()
+				.then(() => {
+
+					process.exit(1);
+
+				})
+				.catch((ex) => {
+
+					process.exit(1);
+
+				});
+
+		});
+
+	}
+
+	private async _flushCloudWatch () {
+
+		await new Promise((resolve, reject) => {
+
+			if (this._logger.transports.CloudWatch) {
+
+				(this._logger.transports.CloudWatch as any).kthxbye((err) => {
+
+					if (err) {
+
+						reject(err);
+
+					} else {
+
+						resolve();
+
+					}
+
+				});
+
+			} else {
+
+				resolve();
+
+			}
+
+		});
+
+	}
+
+	private async _flushStreams () {
+
+		await new Promise((resolve, reject) => {
+
+			/********************************************************************************************
+			 The following code has been adapted from https://github.com/jdthorpe/winston-log-and-exit
+			 Retrieved 2017-09-15.  Its use is permitted by the MIT license.
+			 ********************************************************************************************/
 
 			let numFlushes = 0;
 			let numFlushed = 0;
-			Object.keys(self.transports).forEach((k) => {
 
-				const transport = self.transports[k] as any;
+			Object.keys(this._logger.transports).forEach((k) => {
+
+				const transport = this._logger.transports[k] as any;
+
 				if (transport._stream) {
 
 					numFlushes += 1;
@@ -129,7 +225,7 @@ export default class Logger implements ILogger {
 						numFlushed += 1;
 						if (numFlushes === numFlushed) {
 
-							process.exit(1);
+							resolve();
 
 						}
 
@@ -143,7 +239,7 @@ export default class Logger implements ILogger {
 
 			if (numFlushes === 0) {
 
-				process.exit(1);
+				resolve();
 
 			}
 
