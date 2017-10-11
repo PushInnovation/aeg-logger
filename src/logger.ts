@@ -2,6 +2,7 @@ import * as winston from 'winston';
 import { Papertrail } from 'winston-papertrail';
 import * as WinstonCloudWatch from 'winston-cloudwatch';
 import { TransportInstance, TransportOptions } from 'winston';
+import * as _ from 'lodash';
 
 export interface ILoggerConfig {
 	transports: any[];
@@ -90,6 +91,30 @@ export default class Logger implements ILogger {
 	public addTransport (transport: winston.TransportInstance, options: TransportOptions) {
 
 		this._logger.add(transport, options);
+
+	}
+
+	public updateTransport (name: string, property: string, value: any) {
+
+		const transport = _.find(this._logger.transports, (t) => t.name === name);
+
+		if (transport) {
+
+			if (transport[property]) {
+
+				transport[property] = value;
+
+			} else {
+
+				throw new Error('Transport property not found');
+
+			}
+
+		} else {
+
+			throw new Error('Transport not found');
+
+		}
 
 	}
 

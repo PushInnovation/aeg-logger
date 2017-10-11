@@ -1,5 +1,22 @@
 import logger from '../../src/index';
 import * as winston from 'winston';
+import * as crypto from 'crypto';
+
+before(async () => {
+
+	const startTime = new Date().toISOString();
+
+	logger.updateTransport('CloudWatch', 'logStreamName', () => {
+
+		const date = new Date().toISOString().split('T')[0];
+		return 'test-' + date + '-' +
+			crypto.createHash('md5')
+				.update(startTime)
+				.digest('hex');
+
+	});
+
+});
 
 after(async () => {
 
