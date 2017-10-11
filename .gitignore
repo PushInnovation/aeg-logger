@@ -38,3 +38,6 @@ xunit.xml
 
 /test-results.xml
 .nyc_output
+
+!/config/development.yaml
+/config/*.yaml

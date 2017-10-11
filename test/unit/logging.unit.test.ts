@@ -1,5 +1,33 @@
 import logger from '../../src/index';
 import * as winston from 'winston';
+import * as crypto from 'crypto';
+import * as _ from 'lodash';
+
+before(async () => {
+
+	const startTime = new Date().toISOString();
+
+	if (_.find(logger.transports, (t) => t.name === 'CloudWatch')) {
+
+		logger.updateTransport('CloudWatch', 'logStreamName', () => {
+
+			const date = new Date().toISOString().split('T')[0];
+			return 'test-' + date + '-' +
+				crypto.createHash('md5')
+					.update(startTime)
+					.digest('hex');
+
+		});
+
+	}
+
+});
+
+after(async () => {
+
+	await logger.flush();
+
+});
 
 describe('aeg-logger', () => {
 

@@ -14,3 +14,12 @@ aeg-logger:
 #      host: x
 #      port: x
 #      program: test
+# example
+#    - type: cloudWatch
+#      level: debug
+#      logGroupName: test
+#      logStreamName: test
+#      awsAccessKeyId: x
+#      awsSecretKey: x
+#      awsRegion: x
+#      retentionInDays: x
