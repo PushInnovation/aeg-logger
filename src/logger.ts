@@ -191,6 +191,10 @@ export default class Logger implements ILogger {
 
 				});
 
+			} else {
+
+				resolve();
+
 			}
 
 		});
