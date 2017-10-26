@@ -29,14 +29,25 @@ export default class Logger implements ILogger {
 		loggerConfig.transports.forEach((transport) => {
 
 			switch (transport.type) {
-				case 'console':
-					transports.push(new (winston.transports.Console)({
+				case 'console': {
+
+					const opts: any = {
 						colorize: transport.colorize !== undefined ? transport.colorize : true,
 						level: transport.level,
 						handleExceptions: true,
-						timestamp: transport.timestamp
-					}));
+						timestamp: transport.timestamp,
+						json: transport.json
+					};
+
+					if (transport.json && !transport.prettyPrint) {
+
+						opts.stringify = (obj) => JSON.stringify(obj);
+
+					}
+
+					transports.push(new (winston.transports.Console)(opts));
 					break;
+				}
 				case 'file':
 					transports.push(new (winston.transports.File)({
 						colorize: transport.colorize !== undefined ? transport.colorize : true,
